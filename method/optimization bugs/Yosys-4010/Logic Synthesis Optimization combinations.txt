@@ -1,0 +1,8 @@
+read_verilog rtl.v
+hierarchy;
+flatten;
+proc -norom;
+fsm_extract; opt_share; opt_reduce; wreduce; opt_mem_feedback; opt_dff -keepdc; opt_dff -sat; opt_reduce -full; opt_clean; opt_expr -mux_bool; opt_dff -nodffe; opt_expr -keepdc; opt_dff -nodffe; opt_reduce -fine; opt_expr; opt_expr -fine;
+techmap;
+abc;
+write_verilog syn_yosys.v

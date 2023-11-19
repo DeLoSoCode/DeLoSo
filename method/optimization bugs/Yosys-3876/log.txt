@@ -1,0 +1,946 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.30+48 (git sha1 14d50a176, clang 14.0.0-1ubuntu1 -fPIC -Os)
+
+
+-- Running command `
+	read_verilog rtl.v         
+	hierarchy
+	proc;
+	opt;
+	opt_expr -undriven; opt_clean; opt_share; opt_reduce;
+	fsm;
+	opt_clean; opt_reduce; 
+	memory;
+	opt_mem;
+	opt;
+	abc;
+	qwp -ltr; 	
+	write_verilog syn_yosys.v' --
+
+1. Executing Verilog-2005 frontend: rtl.v
+Parsing Verilog input from `rtl.v' to AST representation.
+Generating RTLIL representation for module `\top'.
+Generating RTLIL representation for module `\module37'.
+Generating RTLIL representation for module `\module59'.
+Generating RTLIL representation for module `\module44'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+Mapping positional arguments of cell module37.modinst56 (module44).
+Mapping positional arguments of cell top.modinst90 (module37).
+Warning: Resizing cell port module37.modinst81.wire62 from 20 bits to 17 bits.
+Warning: Resizing cell port module37.modinst81.wire60 from 11 bits to 9 bits.
+Warning: Resizing cell port module37.modinst81.y from 5 bits to 181 bits.
+Warning: Resizing cell port module37.modinst81.wire63 from 16 bits to 4 bits.
+Warning: Resizing cell port module37.modinst81.wire64 from 20 bits to 14 bits.
+Warning: Resizing cell port module37.modinst56.y from 6 bits to 31 bits.
+Warning: Resizing cell port module37.modinst56.wire49 from 20 bits to 15 bits.
+Warning: Resizing cell port module37.modinst56.wire47 from 13 bits to 12 bits.
+Warning: Resizing cell port module37.modinst56.wire45 from 16 bits to 12 bits.
+Warning: Resizing cell port top.modinst90.y from 10 bits to 91 bits.
+Warning: Resizing cell port top.modinst90.wire41 from 22 bits to 11 bits.
+Warning: Resizing cell port top.modinst90.wire40 from 21 bits to 16 bits.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$rtl.v:358$267 in module module59.
+Marked 6 switch rules as full_case in process $proc$rtl.v:95$5 in module top.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 7 redundant assignments.
+Promoted 43 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\module59.$proc$rtl.v:325$334'.
+  Set init value: \reg65 = 20'00000000000000000000
+Found init rule in `\module59.$proc$rtl.v:324$333'.
+  Set init value: \reg66 = 16'0000000000000000
+Found init rule in `\module59.$proc$rtl.v:323$332'.
+  Set init value: \reg67 = 13'0000000000000
+Found init rule in `\module59.$proc$rtl.v:322$331'.
+  Set init value: \reg68 = 12'000000000000
+Found init rule in `\module59.$proc$rtl.v:321$330'.
+  Set init value: \reg69 = 5'00000
+Found init rule in `\module59.$proc$rtl.v:320$329'.
+  Set init value: \reg71 = 9'000000000
+Found init rule in `\module59.$proc$rtl.v:319$328'.
+  Set init value: \reg72 = 12'000000000000
+Found init rule in `\module59.$proc$rtl.v:318$327'.
+  Set init value: \reg73 = 10'0000000000
+Found init rule in `\module59.$proc$rtl.v:317$326'.
+  Set init value: \reg74 = 22'0000000000000000000000
+Found init rule in `\module37.$proc$rtl.v:263$244'.
+  Set init value: \reg82 = 15'000000000000000
+Found init rule in `\module37.$proc$rtl.v:262$243'.
+  Set init value: \reg83 = 13'0000000000000
+Found init rule in `\top.$proc$rtl.v:49$222'.
+  Set init value: \reg8 = 14'00000000000000
+Found init rule in `\top.$proc$rtl.v:48$221'.
+  Set init value: \reg9 = 21'000000000000000000000
+Found init rule in `\top.$proc$rtl.v:47$220'.
+  Set init value: \reg10 = 20'00000000000000000000
+Found init rule in `\top.$proc$rtl.v:46$219'.
+  Set init value: \reg11 = 14'00000000000000
+Found init rule in `\top.$proc$rtl.v:45$218'.
+  Set init value: \reg12 = 13'0000000000000
+Found init rule in `\top.$proc$rtl.v:44$217'.
+  Set init value: \reg13 = 8'00000000
+Found init rule in `\top.$proc$rtl.v:43$216'.
+  Set init value: \reg14 = 9'000000000
+Found init rule in `\top.$proc$rtl.v:42$215'.
+  Set init value: \reg15 = 22'0000000000000000000000
+Found init rule in `\top.$proc$rtl.v:41$214'.
+  Set init value: \reg16 = 21'000000000000000000000
+Found init rule in `\top.$proc$rtl.v:40$213'.
+  Set init value: \reg17 = 6'000000
+Found init rule in `\top.$proc$rtl.v:39$212'.
+  Set init value: \reg18 = 11'00000000000
+Found init rule in `\top.$proc$rtl.v:38$211'.
+  Set init value: \reg19 = 4'0000
+Found init rule in `\top.$proc$rtl.v:37$210'.
+  Set init value: \reg20 = 15'000000000000000
+Found init rule in `\top.$proc$rtl.v:36$209'.
+  Set init value: \reg21 = 14'00000000000000
+Found init rule in `\top.$proc$rtl.v:35$208'.
+  Set init value: \reg22 = 20'00000000000000000000
+Found init rule in `\top.$proc$rtl.v:34$207'.
+  Set init value: \reg23 = 20'00000000000000000000
+Found init rule in `\top.$proc$rtl.v:33$206'.
+  Set init value: \reg24 = 10'0000000000
+Found init rule in `\top.$proc$rtl.v:32$205'.
+  Set init value: \reg25 = 12'000000000000
+Found init rule in `\top.$proc$rtl.v:31$204'.
+  Set init value: \reg26 = 7'0000000
+Found init rule in `\top.$proc$rtl.v:30$203'.
+  Set init value: \reg28 = 15'000000000000000
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~7 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\module59.$proc$rtl.v:325$334'.
+Creating decoders for process `\module59.$proc$rtl.v:324$333'.
+Creating decoders for process `\module59.$proc$rtl.v:323$332'.
+Creating decoders for process `\module59.$proc$rtl.v:322$331'.
+Creating decoders for process `\module59.$proc$rtl.v:321$330'.
+Creating decoders for process `\module59.$proc$rtl.v:320$329'.
+Creating decoders for process `\module59.$proc$rtl.v:319$328'.
+Creating decoders for process `\module59.$proc$rtl.v:318$327'.
+Creating decoders for process `\module59.$proc$rtl.v:317$326'.
+Creating decoders for process `\module59.$proc$rtl.v:358$267'.
+     1/3: $0\reg71[8:0]
+     2/3: $0\reg72[11:0]
+     3/3: $0\reg73[9:0]
+Creating decoders for process `\module59.$proc$rtl.v:342$245'.
+Creating decoders for process `\module37.$proc$rtl.v:263$244'.
+Creating decoders for process `\module37.$proc$rtl.v:262$243'.
+Creating decoders for process `\module37.$proc$rtl.v:287$228'.
+Creating decoders for process `\top.$proc$rtl.v:49$222'.
+Creating decoders for process `\top.$proc$rtl.v:48$221'.
+Creating decoders for process `\top.$proc$rtl.v:47$220'.
+Creating decoders for process `\top.$proc$rtl.v:46$219'.
+Creating decoders for process `\top.$proc$rtl.v:45$218'.
+Creating decoders for process `\top.$proc$rtl.v:44$217'.
+Creating decoders for process `\top.$proc$rtl.v:43$216'.
+Creating decoders for process `\top.$proc$rtl.v:42$215'.
+Creating decoders for process `\top.$proc$rtl.v:41$214'.
+Creating decoders for process `\top.$proc$rtl.v:40$213'.
+Creating decoders for process `\top.$proc$rtl.v:39$212'.
+Creating decoders for process `\top.$proc$rtl.v:38$211'.
+Creating decoders for process `\top.$proc$rtl.v:37$210'.
+Creating decoders for process `\top.$proc$rtl.v:36$209'.
+Creating decoders for process `\top.$proc$rtl.v:35$208'.
+Creating decoders for process `\top.$proc$rtl.v:34$207'.
+Creating decoders for process `\top.$proc$rtl.v:33$206'.
+Creating decoders for process `\top.$proc$rtl.v:32$205'.
+Creating decoders for process `\top.$proc$rtl.v:31$204'.
+Creating decoders for process `\top.$proc$rtl.v:30$203'.
+Creating decoders for process `\top.$proc$rtl.v:213$168'.
+Creating decoders for process `\top.$proc$rtl.v:95$5'.
+     1/16: $0\reg20[14:0]
+     2/16: $0\reg19[3:0]
+     3/16: $0\reg18[10:0]
+     4/16: $0\reg10[19:0]
+     5/16: $0\reg9[20:0]
+     6/16: $0\reg8[13:0]
+     7/16: $0\reg11[13:0]
+     8/16: $0\reg12[12:0]
+     9/16: $0\reg13[7:0]
+    10/16: $0\reg14[8:0]
+    11/16: $0\reg15[21:0]
+    12/16: $0\reg21[13:0]
+    13/16: $0\reg22[19:0]
+    14/16: $0\reg23[19:0]
+    15/16: $0\reg24[9:0]
+    16/16: $0\reg25[11:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\module59.\reg74' using process `\module59.$proc$rtl.v:358$267'.
+  created $dff cell `$procdff$449' with positive edge clock.
+Creating register for signal `\module59.\reg73' using process `\module59.$proc$rtl.v:358$267'.
+  created $dff cell `$procdff$450' with positive edge clock.
+Creating register for signal `\module59.\reg72' using process `\module59.$proc$rtl.v:358$267'.
+  created $dff cell `$procdff$451' with positive edge clock.
+Creating register for signal `\module59.\reg71' using process `\module59.$proc$rtl.v:358$267'.
+  created $dff cell `$procdff$452' with positive edge clock.
+Creating register for signal `\module59.\reg69' using process `\module59.$proc$rtl.v:342$245'.
+  created $dff cell `$procdff$453' with positive edge clock.
+Creating register for signal `\module59.\reg68' using process `\module59.$proc$rtl.v:342$245'.
+  created $dff cell `$procdff$454' with positive edge clock.
+Creating register for signal `\module59.\reg67' using process `\module59.$proc$rtl.v:342$245'.
+  created $dff cell `$procdff$455' with positive edge clock.
+Creating register for signal `\module59.\reg66' using process `\module59.$proc$rtl.v:342$245'.
+  created $dff cell `$procdff$456' with positive edge clock.
+Creating register for signal `\module59.\reg65' using process `\module59.$proc$rtl.v:342$245'.
+  created $dff cell `$procdff$457' with positive edge clock.
+Creating register for signal `\module37.\reg83' using process `\module37.$proc$rtl.v:287$228'.
+  created $dff cell `$procdff$458' with positive edge clock.
+Creating register for signal `\module37.\reg82' using process `\module37.$proc$rtl.v:287$228'.
+  created $dff cell `$procdff$459' with positive edge clock.
+Creating register for signal `\top.\reg28' using process `\top.$proc$rtl.v:213$168'.
+  created $dff cell `$procdff$460' with positive edge clock.
+Creating register for signal `\top.\reg26' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$461' with positive edge clock.
+Creating register for signal `\top.\reg25' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$462' with positive edge clock.
+Creating register for signal `\top.\reg24' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$463' with positive edge clock.
+Creating register for signal `\top.\reg23' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$464' with positive edge clock.
+Creating register for signal `\top.\reg22' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$465' with positive edge clock.
+Creating register for signal `\top.\reg21' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$466' with positive edge clock.
+Creating register for signal `\top.\reg20' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$467' with positive edge clock.
+Creating register for signal `\top.\reg19' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$468' with positive edge clock.
+Creating register for signal `\top.\reg18' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$469' with positive edge clock.
+Creating register for signal `\top.\reg17' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$470' with positive edge clock.
+Creating register for signal `\top.\reg16' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$471' with positive edge clock.
+Creating register for signal `\top.\reg15' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$472' with positive edge clock.
+Creating register for signal `\top.\reg14' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$473' with positive edge clock.
+Creating register for signal `\top.\reg13' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$474' with positive edge clock.
+Creating register for signal `\top.\reg12' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$475' with positive edge clock.
+Creating register for signal `\top.\reg11' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$476' with positive edge clock.
+Creating register for signal `\top.\reg10' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$477' with positive edge clock.
+Creating register for signal `\top.\reg9' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$478' with positive edge clock.
+Creating register for signal `\top.\reg8' using process `\top.$proc$rtl.v:95$5'.
+  created $dff cell `$procdff$479' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `module59.$proc$rtl.v:325$334'.
+Removing empty process `module59.$proc$rtl.v:324$333'.
+Removing empty process `module59.$proc$rtl.v:323$332'.
+Removing empty process `module59.$proc$rtl.v:322$331'.
+Removing empty process `module59.$proc$rtl.v:321$330'.
+Removing empty process `module59.$proc$rtl.v:320$329'.
+Removing empty process `module59.$proc$rtl.v:319$328'.
+Removing empty process `module59.$proc$rtl.v:318$327'.
+Removing empty process `module59.$proc$rtl.v:317$326'.
+Found and cleaned up 1 empty switch in `\module59.$proc$rtl.v:358$267'.
+Removing empty process `module59.$proc$rtl.v:358$267'.
+Removing empty process `module59.$proc$rtl.v:342$245'.
+Removing empty process `module37.$proc$rtl.v:263$244'.
+Removing empty process `module37.$proc$rtl.v:262$243'.
+Removing empty process `module37.$proc$rtl.v:287$228'.
+Removing empty process `top.$proc$rtl.v:49$222'.
+Removing empty process `top.$proc$rtl.v:48$221'.
+Removing empty process `top.$proc$rtl.v:47$220'.
+Removing empty process `top.$proc$rtl.v:46$219'.
+Removing empty process `top.$proc$rtl.v:45$218'.
+Removing empty process `top.$proc$rtl.v:44$217'.
+Removing empty process `top.$proc$rtl.v:43$216'.
+Removing empty process `top.$proc$rtl.v:42$215'.
+Removing empty process `top.$proc$rtl.v:41$214'.
+Removing empty process `top.$proc$rtl.v:40$213'.
+Removing empty process `top.$proc$rtl.v:39$212'.
+Removing empty process `top.$proc$rtl.v:38$211'.
+Removing empty process `top.$proc$rtl.v:37$210'.
+Removing empty process `top.$proc$rtl.v:36$209'.
+Removing empty process `top.$proc$rtl.v:35$208'.
+Removing empty process `top.$proc$rtl.v:34$207'.
+Removing empty process `top.$proc$rtl.v:33$206'.
+Removing empty process `top.$proc$rtl.v:32$205'.
+Removing empty process `top.$proc$rtl.v:31$204'.
+Removing empty process `top.$proc$rtl.v:30$203'.
+Removing empty process `top.$proc$rtl.v:213$168'.
+Found and cleaned up 6 empty switches in `\top.$proc$rtl.v:95$5'.
+Removing empty process `top.$proc$rtl.v:95$5'.
+Cleaned up 7 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module44.
+Optimizing module module59.
+<suppressed ~7 debug messages>
+Optimizing module module37.
+<suppressed ~1 debug messages>
+Optimizing module top.
+<suppressed ~27 debug messages>
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module44.
+Optimizing module module59.
+Optimizing module module37.
+Optimizing module top.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\module44'.
+Finding identical cells in module `\module59'.
+Finding identical cells in module `\module37'.
+Finding identical cells in module `\top'.
+<suppressed ~27 debug messages>
+Removed a total of 9 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \module44..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \module59..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \module37..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $procmux$430: { 19'0000000000000000000 \wire3 [0] } -> 20'00000000000000000000
+      Replacing known input bits on port A of cell $procmux$364: \wire3 [10:0] -> { \wire3 [10:1] 1'0 }
+      Replacing known input bits on port A of cell $ternary$rtl.v:159$106: { 10'0000000000 \wire6 [0] } -> 11'00000000000
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~55 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \module44.
+  Optimizing cells in module \module59.
+    New input vector for $reduce_or cell $reduce_or$rtl.v:346$248: \wire63
+  Optimizing cells in module \module59.
+  Optimizing cells in module \module37.
+  Optimizing cells in module \top.
+    New input vector for $reduce_or cell $reduce_or$rtl.v:219$174: { $reduce_and$rtl.v:92$1_Y \wire1 [1:0] }
+    New input vector for $reduce_and cell $reduce_and$rtl.v:227$180: { \reg16 \wire3 [5:0] }
+  Optimizing cells in module \top.
+Performed a total of 3 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\module44'.
+Finding identical cells in module `\module59'.
+Finding identical cells in module `\module37'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$454 ($dff) from module module59 (D = $ternary$rtl.v:352$265_Y [11:7], Q = \reg68 [11:7], rval = 5'00000).
+Adding EN signal on $procdff$450 ($dff) from module module59 (D = $logic_not$rtl.v:373$300_Y, Q = \reg73).
+Adding EN signal on $procdff$451 ($dff) from module module59 (D = { 11'00000000000 $gt$rtl.v:371$299_Y }, Q = \reg72).
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$485 ($dffe) from module module59.
+Setting constant 0-bit at position 1 on $procdff$453 ($dff) from module module59.
+Setting constant 0-bit at position 2 on $procdff$453 ($dff) from module module59.
+Setting constant 0-bit at position 3 on $procdff$453 ($dff) from module module59.
+Setting constant 0-bit at position 4 on $procdff$453 ($dff) from module module59.
+Setting constant 0-bit at position 4 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 5 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 6 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 7 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 8 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 9 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 10 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 11 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 12 on $procdff$455 ($dff) from module module59.
+Setting constant 0-bit at position 0 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 1 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 2 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 3 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 4 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 5 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 6 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 7 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 8 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 9 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 10 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 11 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 12 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 13 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 14 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 15 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 16 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 17 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 18 on $procdff$457 ($dff) from module module59.
+Setting constant 0-bit at position 19 on $procdff$457 ($dff) from module module59.
+Adding SRST signal on $procdff$458 ($dff) from module module37 (D = $logic_not$rtl.v:294$231_Y, Q = \reg83 [7:0], rval = 8'10100001).
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$490 ($dff) from module module37.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$490 ($dff) from module module37.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$490 ($dff) from module module37.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$490 ($dff) from module module37.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$490 ($dff) from module module37.
+Setting constant 0-bit at position 1 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 2 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 3 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 4 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 5 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 6 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 7 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 8 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 9 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 10 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 11 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 12 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 13 on $procdff$459 ($dff) from module module37.
+Setting constant 0-bit at position 14 on $procdff$459 ($dff) from module module37.
+Adding SRST signal on $procdff$479 ($dff) from module top (D = $logic_and$rtl.v:101$26_Y [13:4], Q = \reg8 [13:4], rval = 10'0000000000).
+Adding EN signal on $procdff$477 ($dff) from module top (D = $procmux$372_Y, Q = \reg10).
+Adding EN signal on $procdff$476 ($dff) from module top (D = { 11'00000000000 \wire3 [7:5] }, Q = \reg11).
+Adding EN signal on $procdff$475 ($dff) from module top (D = { 12'000010111001 $logic_not$rtl.v:0$40_Y }, Q = \reg12).
+Adding EN signal on $procdff$474 ($dff) from module top (D = $procmux$400_Y, Q = \reg13).
+Adding SRST signal on $auto$ff.cc:266:slice$505 ($dffe) from module top (D = $sshl$rtl.v:125$56_Y [7:2], Q = \reg13 [7:2], rval = 6'000000).
+Adding EN signal on $procdff$473 ($dff) from module top (D = $procmux$406_Y, Q = \reg14).
+Adding SRST signal on $auto$ff.cc:266:slice$508 ($dffe) from module top (D = \wire5 [8:2], Q = \reg14 [8:2], rval = 7'0000000).
+Adding SRST signal on $auto$ff.cc:266:slice$508 ($dffe) from module top (D = $ternary$rtl.v:133$66_Y [1], Q = \reg14 [1], rval = 1'0).
+Adding EN signal on $procdff$472 ($dff) from module top (D = $procmux$412_Y, Q = \reg15).
+Adding SRST signal on $auto$ff.cc:266:slice$514 ($dffe) from module top (D = \wire4 [3:2], Q = \reg15 [3:2], rval = 2'00).
+Adding EN signal on $procdff$462 ($dff) from module top (D = { 1'0 \reg18 }, Q = \reg25).
+Adding EN signal on $procdff$463 ($dff) from module top (D = $lt$rtl.v:198$154_Y, Q = \reg24).
+Adding EN signal on $procdff$467 ($dff) from module top (D = $procmux$354_Y, Q = \reg20).
+Adding EN signal on $procdff$464 ($dff) from module top (D = $procmux$438_Y, Q = \reg23).
+Adding EN signal on $procdff$466 ($dff) from module top (D = $procmux$423_Y, Q = \reg21).
+Adding EN signal on $procdff$465 ($dff) from module top (D = $procmux$432_Y, Q = \reg22).
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$517 ($dffe) from module top.
+Setting constant 0-bit at position 0 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 1 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 2 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 3 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 4 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 5 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 6 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 7 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 8 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 9 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 10 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 11 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 12 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 13 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 14 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 15 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 16 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 17 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 18 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 19 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 20 on $procdff$471 ($dff) from module top.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$502 ($dffe) from module top.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$502 ($dffe) from module top.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$502 ($dffe) from module top.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$502 ($dffe) from module top.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$502 ($dffe) from module top.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$502 ($dffe) from module top.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$502 ($dffe) from module top.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$499 ($dffe) from module top.
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \top..
+Removed 31 unused cells and 196 unused wires.
+<suppressed ~63 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module37.
+Optimizing module module44.
+Optimizing module module59.
+<suppressed ~13 debug messages>
+Optimizing module top.
+<suppressed ~5 debug messages>
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \module37..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \module44..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \module59..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~46 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \module37.
+    New input vector for $reduce_or cell $reduce_or$rtl.v:294$230: { \reg82 [0] \y [48:45] }
+  Optimizing cells in module \module37.
+  Optimizing cells in module \module44.
+  Optimizing cells in module \module59.
+  Optimizing cells in module \top.
+    New input vector for $reduce_or cell $reduce_or$rtl.v:197$149: \reg11 [2:0]
+  Optimizing cells in module \top.
+Performed a total of 2 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\module37'.
+Finding identical cells in module `\module44'.
+Finding identical cells in module `\module59'.
+Finding identical cells in module `\top'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+Handling always-active SRST on $auto$ff.cc:266:slice$482 ($sdff) from module module59 (changing to const D).
+Adding SRST signal on $procdff$452 ($dff) from module module59 (D = $ternary$rtl.v:363$288_Y, Q = \reg71, rval = 9'111111110).
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$482 ($dff) from module module59.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$482 ($dff) from module module59.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$482 ($dff) from module module59.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$482 ($dff) from module module59.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$482 ($dff) from module module59.
+Adding SRST signal on $procdff$468 ($dff) from module top (D = $procmux$358_Y [0], Q = \reg19 [0], rval = 1'0).
+Adding SRST signal on $procdff$468 ($dff) from module top (D = { $logic_or$rtl.v:173$122_Y $logic_or$rtl.v:173$122_Y $logic_or$rtl.v:173$122_Y }, Q = \reg19 [3:1], rval = 3'000).
+Adding SRST signal on $procdff$461 ($dff) from module top (D = $ternary$rtl.v:209$164_Y [6], Q = \reg26 [6], rval = 1'0).
+Adding SRST signal on $procdff$460 ($dff) from module top (D = \reg23 [14:1], Q = \reg28 [14:1], rval = 14'11111111111111).
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$509 ($sdffce) from module top.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$509 ($sdffce) from module top.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$509 ($sdffce) from module top.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$509 ($sdffce) from module top.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$509 ($sdffce) from module top.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$509 ($sdffce) from module top.
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+Removed 6 unused cells and 28 unused wires.
+<suppressed ~8 debug messages>
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module37.
+Optimizing module module44.
+Optimizing module module59.
+Optimizing module top.
+<suppressed ~5 debug messages>
+
+4.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \module37..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \module44..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \module59..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $ternary$rtl.v:160$105.
+    dead port 2/2 on $mux $ternary$rtl.v:160$105.
+Removed 2 multiplexer ports.
+<suppressed ~46 debug messages>
+
+4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \module37.
+  Optimizing cells in module \module44.
+  Optimizing cells in module \module59.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+4.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\module37'.
+Finding identical cells in module `\module44'.
+Finding identical cells in module `\module59'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+4.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+Removed 2 unused cells and 8 unused wires.
+<suppressed ~3 debug messages>
+
+4.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module37.
+Optimizing module module44.
+Optimizing module module59.
+Optimizing module top.
+
+4.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \module37..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \module44..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \module59..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~46 debug messages>
+
+4.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \module37.
+  Optimizing cells in module \module44.
+  Optimizing cells in module \module59.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+4.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\module37'.
+Finding identical cells in module `\module44'.
+Finding identical cells in module `\module59'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+4.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+
+4.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module37.
+Optimizing module module44.
+Optimizing module module59.
+Optimizing module top.
+
+4.30. Finished OPT passes. (There is nothing left to do.)
+
+5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module37.
+Optimizing module module44.
+Optimizing module module59.
+Optimizing module top.
+
+6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+
+7. Executing OPT_SHARE pass.
+
+8. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \module37.
+  Optimizing cells in module \module44.
+  Optimizing cells in module \module59.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+9. Executing FSM pass (extract and optimize FSM).
+
+9.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+9.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+9.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+9.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+
+9.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+9.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+9.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+9.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+
+11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \module37.
+  Optimizing cells in module \module44.
+  Optimizing cells in module \module59.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+12. Executing MEMORY pass.
+
+12.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+12.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+12.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+12.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+12.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+12.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+
+12.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+12.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+12.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+
+12.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+12.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+13. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+14. Executing OPT pass (performing simple optimizations).
+
+14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module37.
+Optimizing module module44.
+Optimizing module module59.
+Optimizing module top.
+
+14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\module37'.
+Finding identical cells in module `\module44'.
+Finding identical cells in module `\module59'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \module37..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \module44..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \module59..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~46 debug messages>
+
+14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \module37.
+  Optimizing cells in module \module44.
+  Optimizing cells in module \module59.
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\module37'.
+Finding identical cells in module `\module44'.
+Finding identical cells in module `\module59'.
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \module37..
+Finding unused cells or wires in module \module44..
+Finding unused cells or wires in module \module59..
+Finding unused cells or wires in module \top..
+
+14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module module37.
+Optimizing module module44.
+Optimizing module module59.
+Optimizing module top.
+
+14.9. Finished OPT passes. (There is nothing left to do.)
+
+15. Executing ABC pass (technology mapping using ABC).
+
+15.1. Extracting gate netlist of module `\module37' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+15.2. Extracting gate netlist of module `\module44' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+15.3. Extracting gate netlist of module `\module59' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+15.4. Extracting gate netlist of module `\top' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+16. Executing QWP pass (quadratic wirelength placer).
+
+Running qwp on module module37..
+  x-qwp on X=0.00:1.00, Y=0.00:1.00 with 16 cells, 22 nodes, and 85 edges.
+    y-qwp on X=0.00:0.50, Y=0.00:1.00 with 8 cells, 20 nodes, and 72 edges.
+      x-qwp on X=0.00:0.50, Y=0.00:0.50 with 4 cells, 15 nodes, and 40 edges.
+        y-qwp on X=0.00:0.25, Y=0.00:0.50 with 2 cells, 14 nodes, and 26 edges.
+          x-qwp on X=0.00:0.25, Y=0.00:0.25 with 1 cells, 13 nodes, and 17 edges.
+            X=0.12, Y=0.25 $ternary$rtl.v:277$224 ($mux)
+          x-qwp on X=0.00:0.25, Y=0.25:0.50 with 1 cells, 8 nodes, and 7 edges.
+            X=0.12, Y=0.41 $reduce_bool$rtl.v:277$223 ($reduce_bool)
+        y-qwp on X=0.25:0.50, Y=0.00:0.50 with 2 cells, 14 nodes, and 24 edges.
+          x-qwp on X=0.25:0.50, Y=0.00:0.25 with 1 cells, 7 nodes, and 11 edges.
+            X=0.38, Y=0.25 $reduce_bool$rtl.v:282$226 ($reduce_bool)
+          x-qwp on X=0.25:0.50, Y=0.25:0.50 with 1 cells, 14 nodes, and 13 edges.
+            X=0.38, Y=0.42 $ternary$rtl.v:282$227 ($mux)
+      x-qwp on X=0.00:0.50, Y=0.50:1.00 with 4 cells, 19 nodes, and 58 edges.
+        y-qwp on X=0.00:0.25, Y=0.50:1.00 with 2 cells, 10 nodes, and 16 edges.
+          x-qwp on X=0.00:0.25, Y=0.50:0.75 with 1 cells, 6 nodes, and 5 edges.
+            X=0.12, Y=0.69 $reduce_bool$rtl.v:291$232 ($reduce_bool)
+          x-qwp on X=0.00:0.25, Y=0.75:1.00 with 1 cells, 6 nodes, and 5 edges.
+            X=0.12, Y=0.75 $reduce_xnor$rtl.v:283$225 ($reduce_xnor)
+        y-qwp on X=0.25:0.50, Y=0.50:1.00 with 2 cells, 19 nodes, and 36 edges.
+          x-qwp on X=0.25:0.50, Y=0.50:0.75 with 1 cells, 19 nodes, and 26 edges.
+            X=0.38, Y=0.64 modinst56 (module44)
+          x-qwp on X=0.25:0.50, Y=0.75:1.00 with 1 cells, 17 nodes, and 23 edges.
+            X=0.38, Y=0.75 modinst81 (module59)
+    y-qwp on X=0.50:1.00, Y=0.00:1.00 with 8 cells, 19 nodes, and 59 edges.
+      x-qwp on X=0.50:1.00, Y=0.00:0.50 with 4 cells, 16 nodes, and 28 edges.
+        y-qwp on X=0.50:0.75, Y=0.00:0.50 with 2 cells, 13 nodes, and 18 edges.
+          x-qwp on X=0.50:0.75, Y=0.00:0.25 with 1 cells, 10 nodes, and 11 edges.
+            X=0.62, Y=0.25 $or$rtl.v:297$235 ($or)
+          x-qwp on X=0.50:0.75, Y=0.25:0.50 with 1 cells, 11 nodes, and 14 edges.
+            X=0.62, Y=0.26 $and$rtl.v:297$234 ($and)
+        y-qwp on X=0.75:1.00, Y=0.00:0.50 with 2 cells, 7 nodes, and 6 edges.
+          x-qwp on X=0.75:1.00, Y=0.00:0.25 with 1 cells, 5 nodes, and 4 edges.
+            X=0.88, Y=0.25 $reduce_or$rtl.v:294$230 ($reduce_or)
+          x-qwp on X=0.75:1.00, Y=0.25:0.50 with 1 cells, 3 nodes, and 2 edges.
+            X=0.88, Y=0.25 $not$rtl.v:297$236 ($not)
+      x-qwp on X=0.50:1.00, Y=0.50:1.00 with 4 cells, 15 nodes, and 27 edges.
+        y-qwp on X=0.50:0.75, Y=0.50:1.00 with 2 cells, 13 nodes, and 15 edges.
+          x-qwp on X=0.50:0.75, Y=0.50:0.75 with 1 cells, 9 nodes, and 10 edges.
+            X=0.62, Y=0.53 $reduce_xnor$rtl.v:289$229 ($reduce_xnor)
+          x-qwp on X=0.50:0.75, Y=0.75:1.00 with 1 cells, 8 nodes, and 7 edges.
+            X=0.62, Y=0.75 $auto$ff.cc:266:slice$491 ($dff)
+        y-qwp on X=0.75:1.00, Y=0.50:1.00 with 2 cells, 9 nodes, and 10 edges.
+          x-qwp on X=0.75:1.00, Y=0.50:0.75 with 1 cells, 3 nodes, and 2 edges.
+            X=0.88, Y=0.75 $logic_not$rtl.v:294$231 ($logic_not)
+          x-qwp on X=0.75:1.00, Y=0.75:1.00 with 1 cells, 8 nodes, and 7 edges.
+            X=0.88, Y=0.75 $auto$ff.cc:266:slice$489 ($sdff)
+
+Summary for module module37:
+Number of edges: 85
+Total edge length: 36.016330
+Total weighted edge length: 60.423976
+
+Histogram over edge lengths:
+              :            :                                
+              :..       .  :                                
+              ::::    : :  : :                              
+              ::::    : :  : :   .     .                    
+:_____._.:__:_::::_.._:_::::_:.:.:.__..::____.______..:____:
+0.003846                                            1.000000
+
+Histogram over weighted edge lengths:
+ :                                                          
+.:              

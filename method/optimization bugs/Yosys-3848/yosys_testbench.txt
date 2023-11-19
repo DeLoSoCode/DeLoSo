@@ -1,0 +1,40 @@
+module testbench  ;
+  wire [(32'h6b):(32'h0)] y;
+  reg [(1'h0):(1'h0)] clk;
+  reg [(4'h9):(1'h0)] wire3;
+  reg signed [(5'h12):(1'h0)] wire2;
+  reg signed [(5'h13):(1'h0)] wire1;
+  reg [(4'he):(1'h0)] wire0;
+  top top1 (.y(y), .clk(clk), .wire3(wire3), .wire2(wire2), .wire1(wire1), .wire0(wire0));
+  initial
+    begin
+      clk = (1'h0);
+      {wire3, wire2, wire1, wire0} = (1'h0);
+      #10 {wire3, wire2, wire1, wire0} = (254'h2a6f7d022cfe9a878817a6fbecb445d8f9b20776374a6641a79f32badbd3bf2d);
+      #10 {wire3, wire2, wire1, wire0} = (254'h387619a591c6601b6c2342a62b263795e202e89c3486c9c057a26330dfca0741);
+      #10 {wire3, wire2, wire1, wire0} = (255'h6a6920e4fc5ac97054d6836c5e02d1675da7a7cff237adf5ec2148b182ae7ee0);
+      #10 {wire3, wire2, wire1, wire0} = (256'hb830ae5c56074a200c49ea8562276d0810476e145791a9cdf8ec5c7510ce4e55);
+      #10 {wire3, wire2, wire1, wire0} = (255'h5105bb4bab889536d42add91fae542d4f6c6452f909e0f6f3520e4f61492e382);
+      #10 {wire3, wire2, wire1, wire0} = (255'h49cc9c36408952b648077758caee089276dad05a7f774d8f4af5e1723e424675);
+      #10 {wire3, wire2, wire1, wire0} = (256'h8c9b75e17d612d71d3fc47c948de40d2a556037651016693e0b6a196450bfb37);
+      #10 {wire3, wire2, wire1, wire0} = (256'h979960512df4626d57ce08c6bb7b539e5ddde22061d4e94e2ed12b083dd8bdf3);
+      #10 {wire3, wire2, wire1, wire0} = (255'h672bea9997be4547439f1780653a7262f94e451fe51dcb55eab2fe8985eac840);
+      #10 {wire3, wire2, wire1, wire0} = (256'ha96b1e3f7bb041c757592adf2bda5d0ee8000afe18a66f26219475538bf7769f);
+      #10 {wire3, wire2, wire1, wire0} = (253'h16dd47d1b07ec0e545192c73ee3bb9892fc732d19da636db26642cad8b48d0ea);
+      #10 {wire3, wire2, wire1, wire0} = (256'hbe7a3c2a97ca77f1db8032eddd361a6c98ab06685e8b409a8fa8591efb8398f3);
+      #10 {wire3, wire2, wire1, wire0} = (250'h276d911d80f58d280ac84f08186c1f2562f345576460a4be8ce9b5d1756999d);
+      #10 {wire3, wire2, wire1, wire0} = (256'hb8ffbc64020c5dc08d3506bea0165b1b8f5b319d30bf6c44062d1e2d6cee552f);
+      #10 {wire3, wire2, wire1, wire0} = (255'h63477bddacd2101c7a7062371fc08b5d22b6a8df8fb9c505de507644ae49ad1e);
+      #10 {wire3, wire2, wire1, wire0} = (256'hf5f820e78153f3319deb59b28c4f22ed5a45fcb939343f62376b26cbbdd46915);
+      #10 {wire3, wire2, wire1, wire0} = (256'ha83a639ef6a3908d2c9d4631e94593a993d6723fc5dc69fbd27cbc6fdfe3168b);
+      #10 {wire3, wire2, wire1, wire0} = (255'h5060c0188e8f659ed5b28639a33ebe0456a04c66bfdc14ff026e6eb4d2443967);
+      #10 {wire3, wire2, wire1, wire0} = (254'h2d61f999b63faec78f33f083f78bfc89bb9a6bc762231f5f2762f7b6a7e980f2);
+      #10 {wire3, wire2, wire1, wire0} = (255'h515e872d492cb225a2c8be321d38647a977614a7313f477755b262ee79a85904);
+      #10 {wire3, wire2, wire1, wire0} = (256'hdb5c8bdb781a5b580e50f2de1201a4a8ece1ca90044100343d7bb9c9bc293887);
+      #10 $finish;
+    end
+  always
+    #5 clk = (~clk);
+  always
+    @(posedge clk) $strobe ("%b", y);
+endmodule

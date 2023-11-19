@@ -1,0 +1,10 @@
+read_verilog rtl.v
+hierarchy
+proc;
+opt_clean; opt_reduce; opt_share; opt_expr; opt_merge; opt_clean -purge; opt_dff;
+fsm;
+opt_expr -fine; opt_clean; opt_reduce; opt_clean;
+memory;
+abc;
+opt_reduce; opt_clean;
+write_verilog new_syn_yosys.v
