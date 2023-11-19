@@ -1,0 +1,28 @@
+[options]
+multiclock on
+mode prove
+aigsmt none
+
+[engines]
+abc pdr
+
+[script]
+read -formal cells_cmos.v
+read -formal cells_cyclone_v.v
+read -formal cells_verific.v
+read -formal cells_xilinx_7.v
+read -formal cells_yosys.v
+read -formal syn_identity.v
+read -formal syn_vivado.v
+read -formal top.v
+prep -top top
+
+[files]
+/home/zou/.cabal/store/ghc-8.6.5/verismith-1.0.0.2-4d02a18e1a33c2009e8c000d5563cd3eb2a4a18f6a8f62a8773f5397f8c259ec/share/data/cells_cmos.v
+/home/zou/.cabal/store/ghc-8.6.5/verismith-1.0.0.2-4d02a18e1a33c2009e8c000d5563cd3eb2a4a18f6a8f62a8773f5397f8c259ec/share/data/cells_cyclone_v.v
+/home/zou/.cabal/store/ghc-8.6.5/verismith-1.0.0.2-4d02a18e1a33c2009e8c000d5563cd3eb2a4a18f6a8f62a8773f5397f8c259ec/share/data/cells_verific.v
+/home/zou/.cabal/store/ghc-8.6.5/verismith-1.0.0.2-4d02a18e1a33c2009e8c000d5563cd3eb2a4a18f6a8f62a8773f5397f8c259ec/share/data/cells_xilinx_7.v
+/home/zou/.cabal/store/ghc-8.6.5/verismith-1.0.0.2-4d02a18e1a33c2009e8c000d5563cd3eb2a4a18f6a8f62a8773f5397f8c259ec/share/data/cells_yosys.v
+syn_vivado.v
+syn_identity.v
+top.v

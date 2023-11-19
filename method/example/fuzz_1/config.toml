@@ -1,0 +1,52 @@
+
+[emi]
+  generate_prob = 2
+  nogenerate_prob = 8
+
+[info]
+  commit = "e57b16651684e0f9e9d0a3cd6f81fccd5b8c7cb6"
+  version = "0.4.0.1"
+
+[probability]
+  expr.binary = 6
+  expr.concatenation = 4
+  expr.number = 2
+  expr.rangeselect = 5
+  expr.signed = 5
+  expr.string = 1
+  expr.ternary = 5
+  expr.unary = 5
+  expr.unsigned = 5
+  expr.variable = 5
+  moditem.assign = 5
+  moditem.combinational = 4
+  moditem.instantiation = 2
+  moditem.sequential = 3
+  module.drop_output = 0
+  module.keep_output = 1
+  statement.blocking = 3
+  statement.conditional = 2
+  statement.forloop = 3
+  statement.nonblocking = 4
+
+[property]
+  determinism = 1
+  module.depth = 3
+  module.max = 7
+  nondeterminism = 0
+  output.combine = false
+  sample.method = "random"
+  sample.size = 12
+  seed = "Seed 11928570172761926677 12870592559449081117"
+  size = 26
+  statement.depth = 3
+
+[[synthesiser]]
+  description = "yosys"
+  name = "yosys"
+  output = "syn_yosys.v"
+
+[[synthesiser]]
+  description = "vivado"
+  name = "vivado"
+  output = "syn_vivado.v"
