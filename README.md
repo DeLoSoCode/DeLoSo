@@ -1,4 +1,10 @@
 # DeLoSo
+## [RECORD:New Simulink Test Tool](https://github.com/Simulink-Testing-Code/RECORD.git)
+**Matlab env dependencies:**
+1. **Matlab 2021a**
+2. **Simulink default**
+***
+
 We propose DeLoSo, the first method for DEtecting LOgic Synthesis Optimization bugs. DeLoSo relies on netlist differences and parameter variations to guide the generation of diverse logic synthesis optimization configuration (LSOC) combinations to thoroughly test the optimization process. 
 
 We systematically investigated 18 core logic synthesis optimization configuration parameters, including cascade_dsp and directive , in the commercial logic synthesis tool Vivado (latest version 2023.1). Additionally, we explored 21 core logic synthesis optimization configuration parameters, such as opt_lut and opt_expr, in the open-source synthesis tool Yosys (latest version 0.30+48).
