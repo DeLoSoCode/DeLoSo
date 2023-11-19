@@ -10,7 +10,7 @@ we propose DeLoSo, the first method for DEtecting LOgic Synthesis Optimization b
 a LSOC diversity evaluator, which assesses the diversity of optimization configurations; and a LSOC validator, which validates the generated LSOC combinations to discover optimization bugs. In two months, DeLoSo identified 18 bugs in two established logic synthesis tools (i.e., Vivado1 and Yosys2); 14 of them have been fixed by vendors. 
 
 ***
-### Hello World
+### Main File
 Our method can be found in the 'method' directory, where 'DeLoSoforVivado' includes the main file 'DeLoSoforVivado_main.py' for detecting optimization bugs in the Vivado logic synthesis tool. Similarly, in 'DeLoSoforYosys,' the main file 'DeLoSoforYosys_main.py' is used to detect optimization bugs in the Yosys logic synthesis tool.
 ***
 
