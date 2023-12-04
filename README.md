@@ -26,6 +26,8 @@ Our method can be found in the 'method' directory：
 Where 'DeLoSoforVivado' includes the main file 'DeLoSoforVivado_main.py' for detecting optimization bugs in the Vivado logic synthesis tool. 
 
 Similarly, in 'DeLoSoforYosys,' the main file 'DeLoSoforYosys_main.py' is used to detect optimization bugs in the Yosys logic synthesis tool.
+
+The example is a test case sample that we randomly generated using verismith.
 ***
 
 ### Here are the details of these bugs
