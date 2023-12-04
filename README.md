@@ -22,7 +22,9 @@ Logic synthesis tools are the core components of digital circuit design, which  
 ***
 ### Main File
 Our method can be found in the 'method' directory：
+
 Where 'DeLoSoforVivado' includes the main file 'DeLoSoforVivado_main.py' for detecting optimization bugs in the Vivado logic synthesis tool. 
+
 Similarly, in 'DeLoSoforYosys,' the main file 'DeLoSoforYosys_main.py' is used to detect optimization bugs in the Yosys logic synthesis tool.
 ***
 
