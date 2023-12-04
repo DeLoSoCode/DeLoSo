@@ -9,11 +9,12 @@
 1. **Vivado 2023.1**
 2. **Yosys 0.30 + 48**
 3. **Icarus Verilog 13.0**
-4. **python 3.8**
-5. **GHC 8.6.5**
-6. **Cabal 3.6.0**
-7. **Stack 2.9.3**
-8. **HLS 2.0.0.1**
+4. **Verismith 1.0.0.2**
+5. **python 3.8**
+6. **GHC 8.6.5**
+7. **Cabal 3.6.0**
+8. **Stack 2.9.3**
+9. **HLS 2.0.0.1**
 ***
 
 ### Our Works
