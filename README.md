@@ -5,9 +5,20 @@
 2. **Open Source Logic Synthesis Tool Yosys (latest version 0.30 + 48)**
 ***
 
+**Env dependencies:**
+1. **Vivado 2023.1**
+2. **Yosys 0.30 + 48**
+3. **Icarus Verilog 13.0**
+4. **python 3.8**
+5. **GHC 8.6.5**
+6. **Cabal 3.6.0**
+7. **Stack 2.9.3**
+8. **HLS 2.0.0.1**
+***
+
 ### Our Works
 we propose DeLoSo, the first method for DEtecting LOgic Synthesis Optimization bugs. DeLoSo relies on netlist differences and parameter variations to guide the generation of diverse logic synthesis optimization configuration (LSOC) combinations to thoroughly test the optimization process. DeLoSo consists of three components: a LSOC generator, which generates diverse LSOC combinations through configuration recombination and mutation;
-a LSOC diversity evaluator, which assesses the diversity of optimization configurations; and a LSOC validator, which validates the generated LSOC combinations to discover optimization bugs. In two months, DeLoSo identified 18 bugs in two established logic synthesis tools (i.e., Vivado1 and Yosys2); 14 of them have been fixed by vendors. 
+a LSOC diversity evaluator, which assesses the diversity of optimization configurations; and a LSOC validator, which validates the generated LSOC combinations to discover optimization bugs. In two months, DeLoSo identified 18 bugs in two established logic synthesis tools (i.e., Vivado and Yosys); 14 of them have been fixed by vendors. 
 
 ***
 ### Main File
