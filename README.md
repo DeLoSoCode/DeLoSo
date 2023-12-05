@@ -22,13 +22,23 @@ Logic synthesis tools are the core components of digital circuit design, which  
 
 ***
 ### Main File
-Our method can be found in the 'method' directory：
+Our methodology is located in the 'method' directory:
 
-Where 'DeLoSoforVivado' includes the main file 'DeLoSoforVivado_main.py' for detecting optimization bugs in the Vivado logic synthesis tool. 
+1.DeLoSoforVivado folder:
 
-Similarly, in 'DeLoSoforYosys,' the main file 'DeLoSoforYosys_main.py' is used to detect optimization bugs in the Yosys logic synthesis tool.
+This folder includes DeLoSoforVivado.py and DeLoSoforVivado_main.py files. DeLoSoforVivado.py comprises our LSOC (Loop Structure Obfuscation Criteria) generator and LSOC diversity evaluator, while DeLoSoforVivado_main.py incorporates the LSOC validator. The main function is also embedded in DeLoSoforVivado_main.py. By assigning the actual test case path to the variable 'files_path' in line 38 and executing the DeLoSoforVivado_main.py file, we can conduct testing on optimization bugs in Vivado. 
 
-The example is a test case sample that we randomly generated using verismith.
+2.DeLoSoforYosys folder:
+
+This folder contains DeLoSoforYosys.py and DeLoSoforYosys_main.py files. Similarly, by executing the DeLoSoforYosys_main.py file, we can conduct testing on optimization bugs in Yosys.
+
+3.example folder:
+
+This folder contains two test cases automatically generated using the Verismith tool. In our experiments, all test cases are program codes generated through the Verismith tool.
+
+4.optimization bugs folder:
+
+This folder encompasses optimization bugs discovered in the Vivado and Yosys logic synthesis tools. Each bug file includes a bug_description.txt, providing details on the triggering conditions and an explanation of the bug issues.
 ***
 
 ### Here are the details of these bugs
