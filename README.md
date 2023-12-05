@@ -38,7 +38,7 @@ This folder contains two test cases automatically generated using the Verismith 
 
 4.optimization bugs folder:
 
-This folder encompasses optimization bugs discovered in the Vivado and Yosys logic synthesis tools. Each bug file includes a bug_description.txt, providing details on the triggering conditions and an explanation of the bug issues.
+This folder encompasses optimization bugs discovered in the Vivado and Yosys logic synthesis tools. Each bug file includes a bug_description.pdf, providing details on the triggering conditions and an explanation of the bug issues.
 ***
 
 ### Here are the details of these bugs
