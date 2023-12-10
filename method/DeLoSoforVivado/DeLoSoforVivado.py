@@ -297,7 +297,7 @@ compare_list = [ '-flatten_hierarchy',
         '-cascade_dsp',
         '-incremental_mode']
 
-def optimizeGA(n_pop=50, n_gen=30, cxpb=0.5, mutpb=0.2, lambda_=10, mu=2,num_solutions=10):
+def optimizeGA(n_pop=50, n_gen=50, cxpb=0.5, mutpb=0.2, lambda_=10, mu=2,num_solutions=10):
 
     creator.create("FitnessMulti", base.Fitness, weights=(0.5, 0.5))
     creator.create('Individual', list, fitness=creator.FitnessMulti)
