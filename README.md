@@ -80,13 +80,13 @@ bug14：yosys	   3867	     Inconsistency Issue in Synthesis and Simulation�
 
 bug15：yosys	   4160	   BUG：Issue in Yosys Synthesis: 'std::length_error' Leads to Termination.
 
-bug15：vivado	7Ogcx6SAB	 The control_set_opt_threshold  Parameters Resulted in Inversion Operation Error.
+bug16：vivado	7Ogcx6SAB	 The control_set_opt_threshold  Parameters Resulted in Inversion Operation Error.
 
-bug16：yosys	   3895	     Inconsistency Issue with Continuous Assignment Error after FSM Optimization using opt_dff.
+bug17：yosys	   3895	     Inconsistency Issue with Continuous Assignment Error after FSM Optimization using opt_dff.
 
-bug17：yosys	   4010		   Synthesis optimization error, inconsistent simulation results.
+bug18：yosys	   4010		   Synthesis optimization error, inconsistent simulation results.
 
-bug18：yosys	   3876	     Memory overflow leading to Yosys crash.
+bug19：yosys	   3876	     Memory overflow leading to Yosys crash.
 ***
 **We've had so much help from Vivado and Yosys staff in finding and confirming bugs. I would like to express my gratitude here.**
 
