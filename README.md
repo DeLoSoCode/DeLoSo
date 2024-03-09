@@ -34,7 +34,7 @@ This folder contains DeLoSoforYosys.py and DeLoSoforYosys_main.py files. Similar
 
 3.baseline folder:
 
-This folder contains the implementations of the three comparison algorithms used in the baseline of this paper, which are Default, InitSwarm, and DynSwarm. In addition, we have conducted ablation experiments to verify the effects of netlist diversity and parameter diversity on the evaluation component. The implementation programs of the DeLoSo_edif and DeLoSo_Parameter algorithms used in the ablation experiments are located in the DeLoSo_edif and DeLoSo_Parameter packages under this folder, respectively.
+This folder contains the implementations of the three comparison algorithms used in the baseline of this paper, which are Default, InitSwarm, and DynSwarm. 
 
 4.example folder:
 
