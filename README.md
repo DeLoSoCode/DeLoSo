@@ -18,7 +18,7 @@
 ***
 
 ### Our Works
-Logic synthesis tools are the core components of digital circuit design, which  convert programs written in hardware description languages into gate-level netlists, and optimize the netlists. However, the netlist optimization is complex, with numerous optimization parameters to be configured. Any minor optimization bugs in logic synthesis tools may cause circuit diagrams to significantly deviate from the original design, posing risks in target systems. To this end, we propose DeLoSo, the first method for DEtecting LOgic Synthesis Optimization bugs. DeLoSo relies on netlist differences and parameter variations to guide the generation of diverse logic synthesis optimization configuration (LSOC) combinations to thoroughly test the optimization process. DeLoSo consists of three components: a LSOC generator, which generates diverse LSOC combinations through configuration recombination and mutation; a LSOC diversity evaluator, which assesses the diversity of optimization configurations; and a LSOC validator, which validates the generated LSOC combinations to discover optimization bugs. In two months, DeLoSo identified 18 bugs in two established logic synthesis tools (i.e., Vivado and Yosys); 14 of them have been fixed by vendors. 
+Logic synthesis tools are the core components of digital circuit design, which  convert programs written in hardware description languages into gate-level netlists, and optimize the netlists. However, the netlist optimization is complex, with numerous optimization parameters to be configured. Any minor optimization bugs in logic synthesis tools may cause circuit diagrams to significantly deviate from the original design, posing risks in target systems. To this end, we propose DeLoSo, the first method for DEtecting LOgic Synthesis Optimization bugs. DeLoSo relies on netlist differences and parameter variations to guide the generation of diverse logic synthesis optimization configuration (LSOC) combinations to thoroughly test the optimization process. DeLoSo consists of three components: a LSOC generator, which generates diverse LSOC combinations through configuration recombination and mutation; a LSOC diversity evaluator, which assesses the diversity of optimization configurations; and a LSOC validator, which validates the generated LSOC combinations to discover optimization bugs. In two months, DeLoSo identified 19 bugs in two established logic synthesis tools (i.e., Vivado and Yosys); 15 of them have been fixed by vendors. 
 
 ***
 ### Main File
@@ -32,11 +32,15 @@ This folder includes DeLoSoforVivado.py and DeLoSoforVivado_main.py files. DeLoS
 
 This folder contains DeLoSoforYosys.py and DeLoSoforYosys_main.py files. Similarly, by executing the DeLoSoforYosys_main.py file, we can conduct testing on optimization bugs in Yosys.
 
-3.example folder:
+3.baseline folder:
+
+This folder contains the implementations of the three comparison algorithms used in the baseline of this paper, which are Default, InitSwarm, and DynSwarm. In addition, we have conducted ablation experiments to verify the effects of netlist diversity and parameter diversity on the evaluation component. The implementation programs of the DeLoSo_edif and DeLoSo_Parameter algorithms used in the ablation experiments are located in the DeLoSo_edif and DeLoSo_Parameter packages under this folder, respectively.
+
+4.example folder:
 
 This folder contains two test cases automatically generated using the Verismith tool. In our experiments, all test cases are program codes generated through the Verismith tool.
 
-4.optimization bugs folder:
+5.optimization bugs folder:
 
 This folder encompasses optimization bugs discovered in the Vivado and Yosys logic synthesis tools. Each bug file includes a bug_description.pdf, providing details on the triggering conditions and an explanation of the bug issues.
 ***
