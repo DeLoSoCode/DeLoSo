@@ -78,6 +78,8 @@ bug13：yosys	   3848	     Optimization passes such as opt_clean and opt_r
 
 bug14：yosys	   3867	     Inconsistency Issue in Synthesis and Simulation Results with  opt_expr -fine Pass.
 
+bug15：yosys	   4160	   BUG：Issue in Yosys Synthesis: 'std::length_error' Leads to Termination.
+
 bug15：vivado	7Ogcx6SAB	 The control_set_opt_threshold  Parameters Resulted in Inversion Operation Error.
 
 bug16：yosys	   3895	     Inconsistency Issue with Continuous Assignment Error after FSM Optimization using opt_dff.
