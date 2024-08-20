@@ -1,0 +1,14 @@
+# running in proof/src/
+read -formal cells_cmos.v
+read -formal cells_cyclone_v.v
+read -formal cells_verific.v
+read -formal cells_xilinx_7.v
+read -formal cells_yosys.v
+read -formal syn_identity.v
+read -formal syn_yosys.v
+read -formal top.v
+prep -top top
+
+hierarchy -smtcheck
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il
